@@ -77,3 +77,15 @@ Twitterで宣伝する。自分に手話を教えてくれた教授のところ�
 | CSSフレームワーク                   | Tailwind / daisyUI       | 
 | インフラ：データベース              | PostgreSQL               | 
 | インフラ：Webアプリケーションサーバ | Render                   | 
+
+
+
+
+
+
+
+
+
+### ER図
+
+https://drive.google.com/file/d/11fcLD5RLtzX66_dmifGXqrjznzcxatBi/view?usp=sharing
