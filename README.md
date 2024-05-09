@@ -82,6 +82,7 @@ Twitterで宣伝する。自分に手話を教えてくれた教授のところ�
 
 https://drive.google.com/file/d/1zfwzS6KrOmx_Sci0RNQTAupDaOY6kkgm/view?usp=sharing
 
-###　 画面遷移図
+
+### 画面遷移図
 
 https://www.figma.com/file/96d3bemsL1dJSWmaZ1MsiE/%E3%82%86%E3%81%B3%E3%82%82%E3%81%98?type=design&node-id=0%3A1&mode=design&t=nMrc20R5kVeGYzqK-1
