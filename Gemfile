@@ -67,3 +67,5 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 2.6"
+
+gem 'sorcery', "0.16.3"
