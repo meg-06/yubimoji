@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+.main-margin-top {
+  margin-top: 300px; /* ここには <header> 要素の高さと同じ値を設定します */
+}
+
+.main-margin-left {
+  margin-left: 750px; /* ここには要素を右に移動させたい距離を設定します */
+}
+
+.large-text {
+  font-size: 2em; /* 既存のスタイル */
+  margin-left: 90px; /* ここには要素を右に移動させたい距離を設定します */
+}
