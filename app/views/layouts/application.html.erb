@@ -13,14 +13,14 @@
 
   <body>
     <header class="fixed top-0 left-0 w-full bg-gray-900 text-white padding-y-4 padding-x-6 z-10" >
-      <%# <% if logged_in? %>
+      <% if logged_in? %>
         <%= render 'shared/header' %>
-      <%# <% else %>
-        <%# <%= render 'shared/before_login_header' %>
-      <%# <% end %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
     </header>
 
-    <main class="container mt-100 px-5 flex flex-col flex-grow main-margin-top main-margin-left">
+    <main class="container mt-100 px-5 flex flex-col flex-grow ">
       <%= yield %>
     </main>
   </body>
