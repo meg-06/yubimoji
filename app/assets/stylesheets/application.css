@@ -26,6 +26,14 @@
   width: 25%; /* 画面の80%の幅に設定 */
 }
 
+.mypage-centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%; /* 画面の80%の幅に設定 */
+}
+
 body {
   padding-top: 70px; /* ヘッダーの高さに合わせて調整 */
 }
