@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="row">
         <% if @hiraganas.present? %>
-          <%= render @hiraganas %>
+          <%= render 'hiragana' %>
         <% else %>
           <div class="mb-3">登録した単語がありません</div>
         <% end %>

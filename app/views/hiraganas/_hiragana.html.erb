@@ -3,8 +3,7 @@
     <div class="card-body">
       <h2 class="card-title"><%= hiragana.character%></h2>
       <div class="card-actions justify-end">
-        <button class="btn btn-primary">削除</button>
-      </div>
+        <%= button_to '削除', hiragana_path(hiragana), id: "button-delete-#{hiragana.id}", method: :delete, class: "btn btn-primary" %>       </div>
     </div>
   </div>
 <% end %>
