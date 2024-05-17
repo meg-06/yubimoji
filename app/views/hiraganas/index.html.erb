@@ -1,0 +1,12 @@
+<h1>単語一覧<h1>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @hiraganas.present? %>
+          <%= render @hiraganas %>
+        <% else %>
+          <div class="mb-3">登録した単語がありません</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
