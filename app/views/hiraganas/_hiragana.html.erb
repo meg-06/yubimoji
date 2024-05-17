@@ -1,0 +1,10 @@
+<% @hiraganas.each do |hiragana| %>
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title"><%= hiragana.character%></h2>
+      <div class="card-actions justify-end">
+        <button class="btn btn-primary">削除</button>
+      </div>
+    </div>
+  </div>
+<% end %>
