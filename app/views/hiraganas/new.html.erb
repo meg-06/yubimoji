@@ -1,12 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <%= form_with model: @hiragana, class: "new_board" do |f| %>
-        <div class="mb-3">
-          <%= f.text_field :character, class: "form-control" %>
-        </div>
-        <%= f.submit nil, class: "btn btn-primary" %>
-      <% end %>
+<%= link_to "戻る", mypage_path, class: "link link-neutral" %>
+<div class="h-screen w-screen flex items-center justify-center centered">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <%= form_with model: @hiragana, class: "new_board" do |f| %>
+          <div class="mb-3">
+            <%= f.text_field :character, class: "input input-bordered input-primary w-full text-lg p-2", placeholder: "指文字に変換したいひらがなを入力" %>
+          </div>
+          <div class="flex justify-end">
+            <%= f.submit "登録", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

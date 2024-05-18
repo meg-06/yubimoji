@@ -10,9 +10,9 @@ class HiraganasController < ApplicationController
   def create
     @hiragana = current_user.hiraganas.build(hiragana_params)
     if @hiragana.save
-      redirect_to hiraganas_path, notice: 'ひらがなを登録しました'
+      redirect_to new_hiragana_path, notice: 'ひらがなを登録しました'
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, notice: 'すでに登録されているひらがなです'
     end
   end
 
