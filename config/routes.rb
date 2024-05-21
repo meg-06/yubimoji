@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     root 'staticpages#top'
 
-    resources :hiraganas, only: %i[index new create destroy]
+    resources :hiraganas, only: %i[index new create show destroy]
 
     resources :users, only: %i[new create]
 

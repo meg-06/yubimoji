@@ -17,7 +17,9 @@ class HiraganasController < ApplicationController
   end
 
   def show
-    @hiragana = current_user.hiraganas.find(params[:id])
+    @hiragana = Hiragana.find(params[:id])
+    characters = @hiragana.character.chars
+    @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
   end
 
   def destroy
@@ -29,6 +31,6 @@ class HiraganasController < ApplicationController
   private
 
   def hiragana_params
-    params.require(:hiragana).permit(:character)
+    params.require(:hiragana).permit(:character, :sign_language_id)
   end
 end

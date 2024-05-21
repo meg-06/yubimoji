@@ -1,7 +1,10 @@
+<%= link_to "戻る", mypage_path, class: "link link-neutral" %>
 <% @hiraganas.each do |hiragana| %>
   <div class="card w-96 bg-base-100 shadow-xl">
     <div class="card-body">
-      <h2 class="card-title"><%= hiragana.character%></h2>
+      <%= link_to hiragana_path(hiragana) do %>
+        <h2 class="card-title"><%= hiragana.character %></h2>
+      <% end %>
       <div class="card-actions justify-end">
         <%= button_to '削除', hiragana_path(hiragana), id: "button-delete-#{hiragana.id}", method: :delete, class: "btn btn-primary" %>       </div>
     </div>

@@ -1,0 +1,13 @@
+<%= link_to "戻る", mypage_path, class: "link link-neutral" %>
+<h1><%= @hiragana.character %></h1>
+<p>対応する指文字：</p>
+<% @sign_languages.each do |sign_language| %>
+  <% if sign_language.yubimoji.end_with?('.png') %>
+    <%= image_tag sign_language.yubimoji, alt: "#{sign_language.character}の指文字" %>
+  <% elsif sign_language.yubimoji.end_with?('.mp4') %>
+    <video autoplay>
+      <source src="<%= asset_path(sign_language.yubimoji) %>" type="video/mp4">
+      お使いのブラウザは動画の再生をサポートしていません。
+    </video>
+  <% end %>
+<% end %>
