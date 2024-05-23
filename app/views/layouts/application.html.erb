@@ -7,8 +7,13 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
+    <!-- Swiper CSS -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
   </head>
 
   <body>
@@ -23,5 +28,56 @@
     <main class="container mt-100 px-5 flex flex-col flex-grow ">
       <%= yield %>
     </main>
+
+    <!-- Swiper JS -->
+    <script>
+      var swiper;  // swiperをグローバルスコープで定義
+
+      document.addEventListener('DOMContentLoaded', function() {
+        swiper = new Swiper('.swiper-container', {
+          effect: 'fade',  // フェードエフェクトを適用
+          spaceBetween: 10,  // スライド間の余白を10pxに設定
+          loop: false,  // スライドのループを無効化
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          autoplay: {  // 自動再生を有効化
+            delay: 1000,  // 5秒ごとにスライドを切り替え
+          },
+          on: {
+            init: function () {
+              // 初期化時に一枚目のスライドが動画であれば再生する
+              var firstSlide = this.slides[0];
+              var video = firstSlide.querySelector('video');
+              if (video) {
+                video.play();
+              }
+            },
+            slideChange: function () {
+              var videos = document.querySelectorAll('video');
+              videos.forEach(function(video) {
+                video.pause();
+              });
+
+              // 現在のスライドを取得
+              var currentSlide = this.slides[this.activeIndex];
+
+              // 現在のスライド内の動画要素を取得
+              var video = currentSlide.querySelector('video');
+
+              // 動画要素が存在する場合、動画を再生
+              if (video) {
+                video.play();
+                video.playbackRate = 1;  // 再生速度を1倍に設定
+              }
+              if (this.activeIndex === this.slides.length - 1) {
+                this.autoplay.stop();  // 最後のスライドに到達したら、自動再生を停止
+              }
+            } // slideChange functionの閉じカッコ
+          } // on objectの閉じカッコ
+        }); // Swiperの初期化の閉じカッコ
+      }); // DOMContentLoaded event listenerの閉じカッコ
+    </script>
   </body>
 </html>

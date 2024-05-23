@@ -2,7 +2,7 @@
 <% @hiraganas.each do |hiragana| %>
   <div class="card w-96 bg-base-100 shadow-xl">
     <div class="card-body">
-      <%= link_to hiragana_path(hiragana) do %>
+      <%= link_to hiragana_path(hiragana), data: { turbo: false } do %>
         <h2 class="card-title"><%= hiragana.character %></h2>
       <% end %>
       <div class="card-actions justify-end">
