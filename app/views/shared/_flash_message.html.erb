@@ -1,0 +1,5 @@
+<% flash.each do |message_type, message| %>
+  <div class="<%= daisyui_class_for(message_type) %> px-8 py-4 text-white mt-[-15px] mb-4 rounded-none">
+    <%= message %>
+  </div>
+<% end %>
