@@ -1,6 +1,6 @@
 class HiraganasController < ApplicationController
   def index
-    @hiraganas = current_user.hiraganas
+    @hiraganas = current_user.hiraganas.page(params[:page])
   end
 
   def new
