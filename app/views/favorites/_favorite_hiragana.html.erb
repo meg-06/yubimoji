@@ -1,0 +1,12 @@
+<% @favorites.each do |favorite| %>
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+      <%= link_to hiragana_path(favorite.hiragana), data: { turbo: false } do %>
+        <h2 class="card-title"><%= favorite.hiragana.character %></h2>
+      <% end %>
+      <div class="card-actions justify-end">
+        <%= render 'favorites/favorite_buttons', hiragana: favorite.hiragana %> <!-- お気に入りボタンを追加 -->
+      </div>
+    </div>
+  </div>
+<% end %>
