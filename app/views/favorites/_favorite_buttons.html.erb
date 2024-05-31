@@ -1,0 +1,7 @@
+<div class='ms-auto'>
+  <% if current_user.favorited?(hiragana) %>
+    <%= render 'favorites/unfavorite', { hiragana: hiragana, favorite: current_user.favorites.find_by(hiragana: hiragana) } %>
+  <% else %>
+    <%= render 'favorites/favorite', { hiragana: hiragana } %>
+  <% end %>
+</div>

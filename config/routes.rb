@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   Rails.application.routes.draw do
     root 'staticpages#top'
 
-    resources :hiraganas, only: %i[index new create show destroy]
+    resources :hiraganas, only: %i[index new create show destroy] do
+      resources :favorites, only: %i[create destroy], param: :hiragana_favorite_id
+    end
+
+    resources :favorites, only: %i[index]
 
     resources :users, only: %i[new create]
 

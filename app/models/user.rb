@@ -8,4 +8,18 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   has_many :hiraganas, dependent: :destroy
+  has_many :favorites
+  has_many :favorite_hiraganas, through: :favorites, source: :hiragana
+
+  def favorite(hiragana)
+    favorite_hiraganas << hiragana
+  end
+
+  def unfavorite(hiragana)
+    favorites.find_by(hiragana_id: hiragana.id).destroy
+  end
+
+  def favorited?(hiragana)
+    favorite_hiraganas.include?(hiragana)
+  end
 end
