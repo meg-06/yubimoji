@@ -9,7 +9,7 @@
 
   .swiper-slide img,
   .swiper-slide video {
-    width: 100%;  /* 幅を50%に設定 */
+    width: 100%;  /* 幅を100%に設定 */
     height: auto; /* 高さは自動的に調整する */
   }
 </style>
@@ -32,12 +32,35 @@
           </div>
         <% end %>
       <% end %>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
   </div>
 </div>
 
-<!-- Swiper JS -->
-<script>
+<!-- スライド速度変更ボタン -->
+<div class="playback-speed-buttons">
+  <button class="btn btn-sm bg-yellow-100" data-speed="0.5">0.5x</button>
+  <button class="btn btn-sm bg-yellow-200" data-speed="0.75">0.75x</button>
+  <button class="btn btn-sm bg-yellow-300" data-speed="1">1x</button>
+  <button class="btn btn-sm bg-yellow-400" data-speed="1.25">1.25x</button>
+  <button class="btn btn-sm bg-yellow-500" data-speed="1.5">1.5x</button>
+  <button class="btn btn-sm bg-yellow-600" data-speed="2">2x</button>
+</div>
 
+<script>
+  // handleVideoEnd関数の定義
+  function handleVideoEnd(video) {
+    video.currentTime = 0;  // 再生位置を最初に戻す
+    video.play();  // 再生を開始
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var speedButtons = document.querySelectorAll('.playback-speed-buttons button');
+    console.log('Speed buttons:', speedButtons);  // デバッグ用ログ
+    speedButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var speed = parseFloat(this.getAttribute('data-speed'));
+        console.log('Speed button clicked:', speed);  // ログを追加して確認
+        changeSwiperSpeed(speed);
+      });
+    });
+  });
 </script>

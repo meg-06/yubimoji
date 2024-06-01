@@ -1,0 +1,7 @@
+<%= paginator.render do %>
+  <nav class="flex justify-start">
+    <% paginator.each_page do |page| -%>
+      <%= page_tag page %>
+    <% end -%>
+  </nav>
+<% end %>
