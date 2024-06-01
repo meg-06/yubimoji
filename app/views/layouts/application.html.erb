@@ -13,11 +13,10 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
   </head>
 
   <body>
-    <header class="fixed top-0 left-0 w-full bg-gray-900 text-white padding-y-4 padding-x-6 z-10" >
+    <header class="fixed top-0 left-0 w-full bg-gray-900 text-white padding-y-4 padding-x-6 z-10">
       <% if logged_in? %>
         <%= render 'shared/header' %>
       <% else %>
@@ -26,7 +25,7 @@
     </header>
     <%= render 'shared/flash_message' %>
 
-    <main class="container mt-100 px-5 flex flex-col flex-grow ">
+    <main class="container mt-100 px-5 flex flex-col flex-grow">
       <%= yield %>
     </main>
 
@@ -44,7 +43,7 @@
             prevEl: '.swiper-button-prev',
           },
           autoplay: {  // 自動再生を有効化
-            delay: 1000,  // 5秒ごとにスライドを切り替え
+            delay: 1000,  // 初期のスライド間の遅延時間を設定
           },
           on: {
             init: function () {
@@ -69,6 +68,7 @@
 
               // 動画要素が存在する場合、動画を再生
               if (video) {
+                video.currentTime = 0;  // 再生位置を最初に戻す
                 video.play();
                 video.playbackRate = 1;  // 再生速度を1倍に設定
               }
@@ -78,6 +78,30 @@
             } // slideChange functionの閉じカッコ
           } // on objectの閉じカッコ
         }); // Swiperの初期化の閉じカッコ
+
+        // スワイパーのスライド速度を変更する関数
+        window.changeSwiperSpeed = function(speed) {  // グローバルスコープで関数を定義
+          console.log('Changing swiper speed to:', speed);  // デバッグ用ログ
+          swiper.autoplay.stop();  // 自動再生を停止
+          swiper.params.autoplay.delay = 1000 / speed;  // スライドの遅延を変更
+
+          // スライドを最初に戻す
+          swiper.slideTo(swiper.activeIndex, 0, false);  // 現在のスライドに即座に移動
+
+          // 現在のスライド内の動画をリセットして再生を開始
+          var currentSlide = swiper.slides[swiper.activeIndex];
+          var video = currentSlide.querySelector('video');
+          if (video) {
+            video.currentTime = 0;  // 再生位置を最初に戻す
+            video.play();
+            video.playbackRate = 1;  // 再生速度を1倍に設定
+          }
+
+          // 自動再生を再スタート
+          setTimeout(() => {
+            swiper.autoplay.start();
+          }, 100);  // 少し遅延させて再スタート
+        }
       }); // DOMContentLoaded event listenerの閉じカッコ
     </script>
   </body>
