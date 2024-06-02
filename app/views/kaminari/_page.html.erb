@@ -1,0 +1,5 @@
+<% if page.current? %>
+  <span class="btn btn-sm bg-blue-500"><%= page %></span>
+<% else %>
+  <%= link_to page, url, remote: remote, class: "btn btn-sm" %>
+<% end %>
