@@ -1,66 +1,79 @@
-<%# ... %>
-
-<style>
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .swiper-slide img,
-  .swiper-slide video {
-    width: 100%;  /* 幅を100%に設定 */
-    height: auto; /* 高さは自動的に調整する */
-  }
-</style>
-
-<!-- 以下は変更なし -->
 <%= link_to "戻る", hiraganas_path, class: "link link-neutral" %>
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-      <% @sign_languages.each do |sign_language| %>
-        <% if sign_language.yubimoji.end_with?('.png') %>
-          <div class="swiper-slide">
-            <%= image_tag sign_language.yubimoji, alt: "#{sign_language.character}の指文字" %>
-          </div>
-        <% elsif sign_language.yubimoji.end_with?('.mp4') %>
-          <div class="swiper-slide">
-            <video muted onended="handleVideoEnd(this)">
-              <source src="<%= asset_path(sign_language.yubimoji) %>" type="video/mp4">
-              お使いのブラウザは動画の再生をサポートしていません。
-            </video>
-          </div>
-        <% end %>
-      <% end %>
-  </div>
-</div>
+<%= render 'sign_languages', sign_languages: @sign_languages %>
+<%= link_to "学習する", study_hiragana_path(@hiragana), class: "link link-neutral", data: { turbo: false } %>
 
-<!-- スライド速度変更ボタン -->
-<div class="playback-speed-buttons">
-  <button class="btn btn-sm bg-yellow-100" data-speed="0.5">0.5x</button>
-  <button class="btn btn-sm bg-yellow-200" data-speed="0.75">0.75x</button>
-  <button class="btn btn-sm bg-yellow-300" data-speed="1">1x</button>
-  <button class="btn btn-sm bg-yellow-400" data-speed="1.25">1.25x</button>
-  <button class="btn btn-sm bg-yellow-500" data-speed="1.5">1.5x</button>
-  <button class="btn btn-sm bg-yellow-600" data-speed="2">2x</button>
-</div>
+  <!-- Swiper JS -->
+    <script>
+      var swiper;  // swiperをグローバルスコープで定義
 
-<script>
-  // handleVideoEnd関数の定義
-  function handleVideoEnd(video) {
-    video.currentTime = 0;  // 再生位置を最初に戻す
-    video.play();  // 再生を開始
-  }
+      document.addEventListener('DOMContentLoaded', function() {
+        swiper = new Swiper('.swiper-container', {
+          effect: 'fade',  // フェードエフェクトを適用
+          spaceBetween: 10,  // スライド間の余白を10pxに設定
+          loop: false,  // スライドのループを無効化
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          autoplay: {  // 自動再生を有効化
+            delay: 1000,  // 初期のスライド間の遅延時間を設定
+          },
+          on: {
+            init: function () {
+              // 初期化時に一枚目のスライドが動画であれば再生する
+              var firstSlide = this.slides[0];
+              var video = firstSlide.querySelector('video');
+              if (video) {
+                video.play();
+              }
+            },
+            slideChange: function () {
+              var videos = document.querySelectorAll('video');
+              videos.forEach(function(video) {
+                video.pause();
+              });
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var speedButtons = document.querySelectorAll('.playback-speed-buttons button');
-    console.log('Speed buttons:', speedButtons);  // デバッグ用ログ
-    speedButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        var speed = parseFloat(this.getAttribute('data-speed'));
-        console.log('Speed button clicked:', speed);  // ログを追加して確認
-        changeSwiperSpeed(speed);
-      });
-    });
-  });
-</script>
+              // 現在のスライドを取得
+              var currentSlide = this.slides[this.activeIndex];
+
+              // 現在のスライド内の動画要素を取得
+              var video = currentSlide.querySelector('video');
+
+              // 動画要素が存在する場合、動画を再生
+              if (video) {
+                video.currentTime = 0;  // 再生位置を最初に戻す
+                video.play();
+                video.playbackRate = 1;  // 再生速度を1倍に設定
+              }
+              if (this.activeIndex === this.slides.length - 1) {
+                this.autoplay.stop();  // 最後のスライドに到達したら、自動再生を停止
+              }
+            } // slideChange functionの閉じカッコ
+          } // on objectの閉じカッコ
+        }); // Swiperの初期化の閉じカッコ
+
+        // スワイパーのスライド速度を変更する関数
+        window.changeSwiperSpeed = function(speed) {  // グローバルスコープで関数を定義
+          console.log('Changing swiper speed to:', speed);  // デバッグ用ログ
+          swiper.autoplay.stop();  // 自動再生を停止
+          swiper.params.autoplay.delay = 1000 / speed;  // スライドの遅延を変更
+
+          // スライドを最初に戻す
+          swiper.slideTo(swiper.activeIndex, 0, false);  // 現在のスライドに即座に移動
+
+          // 現在のスライド内の動画をリセットして再生を開始
+          var currentSlide = swiper.slides[swiper.activeIndex];
+          var video = currentSlide.querySelector('video');
+          if (video) {
+            video.currentTime = 0;  // 再生位置を最初に戻す
+            video.play();
+            video.playbackRate = 1;  // 再生速度を1倍に設定
+          }
+
+          // 自動再生を再スタート
+          setTimeout(() => {
+            swiper.autoplay.start();
+          }, 100);  // 少し遅延させて再スタート
+        }
+      }); // DOMContentLoaded event listenerの閉じカッコ
+    </script>

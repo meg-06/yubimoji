@@ -7,22 +7,24 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  Rails.application.routes.draw do
-    root 'staticpages#top'
 
-    resources :hiraganas, only: %i[index new create show destroy] do
-      resources :favorites, only: %i[create destroy], param: :hiragana_favorite_id
+  root 'staticpages#top'
+
+  resources :hiraganas, only: %i[index new create show destroy] do
+    member do
+      get 'study'
     end
-
-    resources :favorites, only: %i[index]
-
-    resources :users, only: %i[new create]
-
-    get 'login', to: 'user_sessions#new'
-    post 'login', to: 'user_sessions#create'
-    delete 'logout', to: 'user_sessions#destroy'
-
-      # ログイン後のマイページへのルート
-    get 'mypage', to: 'user_sessions#mypage', as: :mypage
+    resources :favorites, only: %i[create destroy], param: :hiragana_favorite_id
   end
+
+  resources :favorites, only: %i[index]
+
+  resources :users, only: %i[new create]
+
+  get 'login', to: 'user_sessions#new'
+  post 'login', to: 'user_sessions#create'
+  delete 'logout', to: 'user_sessions#destroy'
+
+    # ログイン後のマイページへのルート
+  get 'mypage', to: 'user_sessions#mypage', as: :mypage
 end
