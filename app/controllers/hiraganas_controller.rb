@@ -29,6 +29,12 @@ class HiraganasController < ApplicationController
     redirect_to hiraganas_path, notice: 'ひらがなを削除しました'
   end
 
+  def study
+    @hiragana = Hiragana.find(params[:id])
+    characters = @hiragana.character.chars
+    @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
+  end
+
   private
 
   def hiragana_params
