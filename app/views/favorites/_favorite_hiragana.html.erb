@@ -5,7 +5,7 @@
         <h2 class="card-title"><%= favorite.hiragana.character %></h2>
       <% end %>
       <div class="card-actions justify-end">
-        <%= render 'favorites/favorite_buttons', hiragana: favorite.hiragana %> <!-- お気に入りボタンを追加 -->
+        <%= render 'favorites/favorite_buttons', hiragana: favorite.hiragana, favorite: favorite, from: 'favorites' %>
       </div>
     </div>
   </div>

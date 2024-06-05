@@ -5,7 +5,8 @@
         <h2 class="card-title"><%= hiragana.character %></h2>
       <% end %>
       <div class="card-actions justify-end">
-        <%= render 'favorites/favorite_buttons', hiragana: hiragana %> <!-- お気に入りボタンを追加 -->
+        <% favorite = current_user.favorites.find_by(hiragana_id: hiragana.id) %>
+        <%= render 'favorites/favorite_buttons', hiragana: hiragana, favorite: favorite, from: nil %>
         <%= button_to '削除', hiragana_path(hiragana), id: "button-delete-#{hiragana.id}", method: :delete, class: "btn bg-red-500 text-white" %>
       </div>
     </div>

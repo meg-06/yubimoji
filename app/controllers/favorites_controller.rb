@@ -15,7 +15,11 @@ class FavoritesController < ApplicationController
   def destroy
     @favorite = current_user.favorites.find(params[:hiragana_favorite_id])
     @favorite.destroy
-    redirect_to favorites_path, danger: 'お気に入りを解除しました。'
+    if params[:from] == 'favorites'
+      redirect_to favorites_path, danger: 'お気に入りを解除しました。'
+    else
+      redirect_to hiraganas_path(params[:hiragana_id]), danger: 'お気に入りを解除しました。'
+    end
   end
 
   private
