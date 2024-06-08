@@ -37,3 +37,9 @@
 body {
   padding-top: 120px; /* ヘッダーの高さに合わせて調整 */
 }
+
+.media-item {
+  width: 100%;  /* 幅を親要素に合わせる */
+  height: auto; /* 高さを自動的に調整 */
+  object-fit: cover; /* 画像/動画を親要素に合わせてスケール */
+}

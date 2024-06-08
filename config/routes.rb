@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   root 'staticpages#top'
 
+  get 'hiraganas/trial', to: 'hiraganas#trial', as: :trial_hiraganas
+
   resources :hiraganas, only: %i[index new create show destroy] do
     member do
       get 'study'
@@ -25,6 +27,6 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
-    # ログイン後のマイページへのルート
+  # ログイン後のマイページへのルート
   get 'mypage', to: 'user_sessions#mypage', as: :mypage
 end
