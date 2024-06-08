@@ -1,4 +1,6 @@
 class HiraganasController < ApplicationController
+  skip_before_action :require_login, only: %i[trial]
+
   def index
     @hiraganas = current_user.hiraganas.page(params[:page])
   end
@@ -34,6 +36,13 @@ class HiraganasController < ApplicationController
     characters = @hiragana.character.chars
     @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
   end
+
+
+  def trial
+    characters = params[:character]&.chars || []
+    @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
+  end
+
 
   private
 
