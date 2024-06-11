@@ -14,7 +14,7 @@
  *= require_self
  */
 
-.large-text {
+/* .large-text {
   font-size: 2em; /* 既存のスタイル */ /* ここには要素を右に移動させたい距離を設定します */
 }
 
@@ -42,4 +42,4 @@ body {
   width: 100%;  /* 幅を親要素に合わせる */
   height: auto; /* 高さを自動的に調整 */
   object-fit: cover; /* 画像/動画を親要素に合わせてスケール */
-}
+} */

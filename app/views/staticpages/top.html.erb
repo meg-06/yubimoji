@@ -1,31 +1,31 @@
-<div class="h-screen w-screen flex justify-center items-center overflow-hidden">
-	<div class='pb-12 text-center md:pb-16'>
-		<h1 class='leading-tighter mb-4 text-7xl font-extrabold tracking-tighter md:text-8xl'>
-			<span class='p-2 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent'>
-				ゆ び も じ
-			</span>
-		</h1>
-		<div class='mx-auto max-w-3xl'>
-			<p class='mb-4 text-xl'>好きな言葉を指文字に変えよう</p>
-					<%= link_to trial_hiraganas_path, class:'group inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 font-medium text-gray-900 text-white focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500 w-full' do %>
-						<span class='rounded-md px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0'>
-							試してみる
-						</span>
-					<% end %>
-			<div class='flex justify-center mt-4'>
-				<div class='mt-1'>
-					<%= link_to new_user_path, class:'group inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-pink-500 to-rose-400 p-0.5 font-medium text-gray-900 hover:text-white focus:ring-4 focus:ring-blue-300 group-hover:from-pink-500 group-hover:to-rose-500' do %>
-						<span class='rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0'>
-							会員登録
-						</span>
-					<% end %>
-					<%= link_to login_path, class:'group inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 font-medium text-gray-900 hover:text-white focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500' do %>
-						<span class='rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0'>
-							ログイン
-						</span>
-					<% end %>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<body class="h-screen w-screen flex justify-center items-center bg-gray-100">
+  <div class="pb-12 text-center md:pb-16">
+    <h1 class="leading-tighter mb-4 text-7xl font-extrabold tracking-tighter md:text-8xl">
+      <span class="p-2 bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+        ゆ び も じ
+      </span>
+    </h1>
+    <div class="mx-auto max-w-3xl">
+      <p class="mb-4 text-xl">好きな言葉を指文字に変えよう</p>
+      <%= link_to trial_hiraganas_path, class: 'group inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 font-medium text-gray-900 text-white focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500 w-full' do %>
+        <span class="rounded-md px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0">
+          試してみる
+        </span>
+      <% end %>
+      <div class="flex justify-center mt-4">
+        <div class="mt-1">
+          <%= link_to new_user_path, class: 'group inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-pink-500 to-rose-400 p-0.5 font-medium text-gray-900 hover:text-white focus:ring-4 focus:ring-blue-300 group-hover:from-pink-500 group-hover:to-rose-500' do %>
+            <span class="rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0">
+              会員登録
+            </span>
+          <% end %>
+          <%= link_to login_path, class: 'group inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 font-medium text-gray-900 hover:text-white focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500' do %>
+            <span class="rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0">
+              ログイン
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
