@@ -1,20 +1,20 @@
-<div class="centered">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
   <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-lg-8 mx-auto">
-        <h1 class="large-text">ログイン</h1>
-        <%= form_with model: @user do |f| %>
+    <div class="row flex justify-center">
+      <div class="col-md-10 col-lg-8 mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="large-text text-center mb-6">ログイン</h1>
+        <%= form_with model: @user, local: true do |f| %>
           <div class="mb-3">
-            <%= f.label :email, class: "flex items-center mb-2 text-gray-600 text-sm font-medium" %>
-            <%= f.email_field :email, id: "Medium-input", class: "block w-full max-w-full px-4 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none leading-relaxed", placeholder: "メールアドレス", required: "" %>
+            <%= f.label :email, class: "block mb-2 text-gray-600 text-sm font-medium" %>
+            <%= f.email_field :email, id: "Medium-input", class: "block w-full px-4 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none leading-relaxed", placeholder: "メールアドレス", required: true %>
           </div>
           <div class="mb-3">
-            <%= f.label :password, class: "flex items-center mb-2 text-gray-600 text-sm font-medium" %>
-            <%= f.password_field :password, id: "Medium-input", class: "block w-full max-w-full px-4 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none leading-relaxed", placeholder: "パスワード", required: "" %>
+            <%= f.label :password, class: "block mb-2 text-gray-600 text-sm font-medium" %>
+            <%= f.password_field :password, id: "Medium-input", class: "block w-full px-4 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none leading-relaxed", placeholder: "パスワード", required: true %>
           </div>
-          <%= f.submit "ログイン", class: "btn btn-primary" %>
+          <%= f.submit "ログイン", class: "btn btn-primary w-full py-2.5 mt-4" %>
         <% end %>
       </div>
     </div>
   </div>
-</div>
+</body>
