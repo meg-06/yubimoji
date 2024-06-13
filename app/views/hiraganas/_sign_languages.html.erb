@@ -55,33 +55,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  // handleVideoEnd関数の定義
-  function handleVideoEnd(video) {
-    video.currentTime = 0;  // 再生位置を最初に戻す
-    video.play();  // 再生を開始
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var speedButtons = document.querySelectorAll('.playback-speed-buttons button');
-    speedButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        var speed = parseFloat(this.getAttribute('data-speed'));
-        changeSwiperSpeed(speed);
-      });
-    });
-  });
-
-  // Swiperの初期化
-  var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 'auto',
-    spaceBetween: 30,  // スライド間のスペース
-    // 他のオプション...
-  });
-
-  function changeSwiperSpeed(speed) {
-    swiper.params.speed = speed * 1000;  // スピードを変更
-    swiper.update();  // Swiperを更新
-  }
-</script>
