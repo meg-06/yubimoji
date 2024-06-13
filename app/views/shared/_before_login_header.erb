@@ -20,13 +20,13 @@
             <div class="hidden w-full lg:flex lg:pl-11 " id="navbar-default-example">
                 <ul class="flex items-center flex-col mt-4 lg:mt-0 lg:ml-auto lg:flex-row gap-4">
                     <li>
-                        <%= link_to 'トップ', root_path, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
+                        <%= link_to t('.home'), root_path, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
                     </li>
                     <li>
-                        <%= link_to 'ログイン', login_path, method: :delete, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
+                        <%= link_to t('.login'), login_path, method: :delete, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
                     </li>
                     <li>
-                        <%= link_to '会員登録', new_user_path, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
+                        <%= link_to t('.register'), new_user_path, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
                     </li>
                 </ul>
             </div>
