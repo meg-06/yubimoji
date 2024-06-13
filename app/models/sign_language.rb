@@ -40,7 +40,7 @@ class SignLanguage < ActiveHash::Base
     { id: 37, character: 'ゆ', yubimoji: 'ゆ.png',media_type: 'image' },
     { id: 38, character: 'よ', yubimoji: 'よ.png',media_type: 'image' },
     { id: 39, character: 'ら', yubimoji: 'ら.png',media_type: 'image' },
-    { id: 40, character: 'り', yubimoji: 'り.png',media_type: 'image' },
+    { id: 40, character: 'り', yubimoji: 'り.mp4',media_type: 'video' },
     { id: 41, character: 'る', yubimoji: 'る.png',media_type: 'image' },
     { id: 42, character: 'れ', yubimoji: 'れ.png',media_type: 'image' },
     { id: 43, character: 'ろ', yubimoji: 'ろ.png',media_type: 'image' },
