@@ -1,0 +1,9 @@
+ja:
+  shared:
+    header:
+      home: "トップ"
+      login: "ログイン"
+    before_login_header:
+      home: "トップ"
+      login: "ログイン"
+      register: "会員登録"

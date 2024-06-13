@@ -73,3 +73,5 @@ gem 'sorcery', '0.17.0'
 gem 'active_hash'
 
 gem 'kaminari'
+
+gem 'rails-i18n'
