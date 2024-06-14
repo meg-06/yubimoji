@@ -2,7 +2,7 @@ ja:
   shared:
     header:
       home: "トップ"
-      login: "ログイン"
+      logout: "ログアウト"
     before_login_header:
       home: "トップ"
       login: "ログイン"
