@@ -1,6 +1,6 @@
 class HiraganasController < ApplicationController
   skip_before_action :require_login, only: %i[trial]
-  layout 'alternative', only: [:new, :create]
+  layout 'alternative', only: [:new, :create, :show, :study, :trial]
 
   def index
     @hiraganas = current_user.hiraganas.page(params[:page])

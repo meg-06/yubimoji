@@ -26,32 +26,30 @@
 
 </style>
 
-<div class="flex flex-col items-center justify-center">
-  <div class="swiper-container max-w-4xl w-full">
-    <div class="swiper-wrapper">
-      <% @sign_languages.each do |sign_language| %>
-        <% if sign_language.yubimoji.end_with?('.png') %>
-          <div class="swiper-slide flex justify-center items-center">
-            <%= image_tag sign_language.yubimoji, alt: "#{sign_language.character}の指文字", class: "swiper-image" %>
-          </div>
-        <% elsif sign_language.yubimoji.end_with?('.mp4') %>
-          <div class="swiper-slide flex justify-center items-center">
-            <video muted onended="handleVideoEnd(this)" class="swiper-video">
-              <source src="<%= asset_path(sign_language.yubimoji) %>" type="video/mp4">
-              お使いのブラウザは動画の再生をサポートしていません。
-            </video>
-          </div>
-        <% end %>
+<div class="swiper-container max-w-4xl w-full">
+  <div class="swiper-wrapper">
+    <% @sign_languages.each do |sign_language| %>
+      <% if sign_language.yubimoji.end_with?('.png') %>
+        <div class="swiper-slide flex justify-center items-center">
+          <%= image_tag sign_language.yubimoji, alt: "#{sign_language.character}の指文字", class: "swiper-image rounded-lg" %>
+        </div>
+      <% elsif sign_language.yubimoji.end_with?('.mp4') %>
+        <div class="swiper-slide flex justify-center items-center">
+          <video muted onended="handleVideoEnd(this)" class="swiper-video rounded-lg">
+            <source src="<%= asset_path(sign_language.yubimoji) %>" type="video/mp4">
+            お使いのブラウザは動画の再生をサポートしていません。
+          </video>
+        </div>
       <% end %>
-    </div>
-    <!-- スライド速度変更ボタン -->
-    <div class="playback-speed-buttons mt-4">
-      <button class="btn btn-sm bg-yellow-100" data-speed="0.5">0.5x</button>
-      <button class="btn btn-sm bg-yellow-200" data-speed="0.75">0.75x</button>
-      <button class="btn btn-sm bg-yellow-300" data-speed="1">1x</button>
-      <button class="btn btn-sm bg-yellow-400" data-speed="1.25">1.25x</button>
-      <button class="btn btn-sm bg-yellow-500" data-speed="1.5">1.5x</button>
-      <button class="btn btn-sm bg-yellow-600" data-speed="2">2x</button>
-    </div>
+    <% end %>
+  </div>
+  <!-- スライド速度変更ボタン -->
+  <div class="playback-speed-buttons mt-4">
+    <button class="btn btn-sm bg-yellow-100" data-speed="0.5">0.5x</button>
+    <button class="btn btn-sm bg-yellow-200" data-speed="0.75">0.75x</button>
+    <button class="btn btn-sm bg-yellow-300" data-speed="1">1x</button>
+    <button class="btn btn-sm bg-yellow-400" data-speed="1.25">1.25x</button>
+    <button class="btn btn-sm bg-yellow-500" data-speed="1.5">1.5x</button>
+    <button class="btn btn-sm bg-yellow-600" data-speed="2">2x</button>
   </div>
 </div>
