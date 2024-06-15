@@ -1,6 +1,15 @@
 <%= link_to "戻る", hiraganas_path, class: "link link-neutral" %>
 <%= render 'sign_languages', sign_languages: @sign_languages %>
 <%= link_to "学習する", study_hiragana_path(@hiragana), class: "link link-neutral", data: { turbo: false } %>
+  <!-- スライド速度変更ボタン -->
+  <div class="playback-speed-buttons mt-4">
+    <button class="btn btn-sm bg-yellow-100" data-speed="0.5">0.5x</button>
+    <button class="btn btn-sm bg-yellow-200" data-speed="0.75">0.75x</button>
+    <button class="btn btn-sm bg-yellow-300" data-speed="1">1x</button>
+    <button class="btn btn-sm bg-yellow-400" data-speed="1.25">1.25x</button>
+    <button class="btn btn-sm bg-yellow-500" data-speed="1.5">1.5x</button>
+    <button class="btn btn-sm bg-yellow-600" data-speed="2">2x</button>
+  </div>
 
 <!-- Swiper JS -->
 <script>
