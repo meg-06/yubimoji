@@ -14,32 +14,3 @@
  *= require_self
  */
 
-/* .large-text {
-  font-size: 2em; /* 既存のスタイル */ /* ここには要素を右に移動させたい距離を設定します */
-}
-
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 25%; /* 画面の80%の幅に設定 */
-}
-
-.mypage-centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%; /* 画面の80%の幅に設定 */
-}
-
-body {
-  padding-top: 120px; /* ヘッダーの高さに合わせて調整 */
-}
-
-.media-item {
-  width: 100%;  /* 幅を親要素に合わせる */
-  height: auto; /* 高さを自動的に調整 */
-  object-fit: cover; /* 画像/動画を親要素に合わせてスケール */
-} */
