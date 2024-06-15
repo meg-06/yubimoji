@@ -17,14 +17,12 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
-  <header class="fixed top-0 left-0 w-full text-white py-4 px-2 z-10">
     <% if logged_in? %>
       <%= render 'shared/header' %>
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
-  </header>
-  <%= render 'shared/flash_message' %>
+      <%= render 'shared/flash_message' %>
 
   <main class="flex-grow flex items-center justify-center px-5 mt-20">
     <div class="w-full max-w-3xl">
