@@ -17,18 +17,14 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
-    <% else %>
-      <%= render 'shared/before_login_header' %>
-    <% end %>
-      <%= render 'shared/flash_message' %>
+  <% if logged_in? %>
+    <%= render 'shared/header' %>
+  <% else %>
+    <%= render 'shared/before_login_header' %>
+  <% end %>
+    <%= render 'shared/flash_message' %>
 
-  <main class="flex-grow flex items-center justify-center px-5 mt-20">
-    <div class="w-full max-w-3xl">
-      <%= yield %>
-    </div>
-  </main>
+    <%= yield %>
 
   <%= render 'shared/footer' %>
 </body>
