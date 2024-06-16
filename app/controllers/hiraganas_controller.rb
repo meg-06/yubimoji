@@ -44,6 +44,15 @@ class HiraganasController < ApplicationController
     @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
   end
 
+  def next
+    current_id = params[:id].to_i
+    @hiragana = Hiragana.where("id < ?", current_id).order(created_at: :desc).first
+    if @hiragana.nil?
+      redirect_to mypage_path, notice: "これ以上問題がありません"
+    else
+      redirect_to study_hiragana_path(@hiragana)
+    end
+  end
 
   private
 

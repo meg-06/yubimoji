@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :hiraganas, only: %i[index new create show destroy] do
     member do
       get 'study'
+      get 'next'
     end
     resources :favorites, only: %i[create destroy], param: :hiragana_favorite_id
   end
