@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
   before_action :set_hiragana, only: [:create, :destroy]
   before_action :require_login
-
+  layout 'alternative', only: [:index]
 
   def index
     @favorites = current_user.favorites.page(params[:page])

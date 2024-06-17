@@ -1,6 +1,6 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
-  layout 'alternative', only: [:mypage]
+  # layout 'alternative', only: [:mypage]
 
   def new; end
 
@@ -17,8 +17,12 @@ class UserSessionsController < ApplicationController
   def mypage
     @user = current_user
     @hiragana = Hiragana.last
-    characters = @hiragana.character.chars
-    @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
+    if @hiragana
+      characters = @hiragana.character.chars
+      @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
+    else
+      @sign_languages = []
+    end
   end
 
   def destroy
