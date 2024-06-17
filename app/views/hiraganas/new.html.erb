@@ -1,16 +1,15 @@
 <%= link_to '戻る', mypage_path, class: 'link link-neutral mb-4' %>
 <body class="h-screen w-screen flex items-center justify-center">
   <main class="container px-5 flex flex-col items-center flex-grow">
-    <div class="max-w-lg bg-white p-8 rounded-lg w-full">
-      <form class="new_board" action="/hiraganas" accept-charset="UTF-8" method="post">
-        <input type="hidden" name="authenticity_token" value="aQ0zf7qs6gQKo6VGb5T6PeAoBM7GJHpoCZFCy3Hl7SicCRF0BIzaurhfLIqfBfNVIF5eeneIJxrqD7pmmuiNAQ" autocomplete="off">
+    <div class="max-w-lg bg-gray-100 p-8 rounded-lg w-full">
+      <%= form_with(url: hiraganas_path, local: true, class: 'new_board') do |form| %>
         <div class="mb-3">
-          <input class="input input-bordered input-primary w-full text-lg p-2" placeholder="指文字に変換したいひらがなを入力" type="text" name="hiragana[character]" id="hiragana_character">
+          <%= form.text_field :character, class: 'input input-bordered input-primary w-full text-lg p-2', placeholder: '指文字に変換したいひらがなを入力', id: 'hiragana_character' %>
         </div>
         <div class="flex justify-end">
-          <input type="submit" name="commit" value="登録" class="btn btn-primary" data-disable-with="登録">
+          <%= form.submit '登録', class: 'btn btn-primary', data: { disable_with: '登録' } %>
         </div>
-      </form>
+      <% end %>
     </div>
   </main>
 </body>
