@@ -46,7 +46,7 @@ class HiraganasController < ApplicationController
 
   def next
     current_id = params[:id].to_i
-    @hiragana = Hiragana.where("id < ?", current_id).order(created_at: :desc).first
+    @hiragana = current_user.hiraganas.where("id < ?", current_id).order(created_at: :desc).first
     if @hiragana.nil?
       redirect_to mypage_path, notice: "これ以上問題がありません"
     else
