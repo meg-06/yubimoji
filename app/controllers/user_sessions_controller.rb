@@ -16,7 +16,7 @@ class UserSessionsController < ApplicationController
 
   def mypage
     @user = current_user
-    @hiragana = Hiragana.last
+    @hiragana = @user.hiraganas.last
     if @hiragana
       characters = @hiragana.character.chars
       @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
