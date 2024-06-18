@@ -1,21 +1,18 @@
-<nav class="sticky top-0 border-solid border-gray-200 w-full border-b py-3 bg-white z-50">
-  <div class="mx-auto">
+<nav class="sticky top-0 border-b border-gray-200 w-full bg-white z-50">
+  <div class="w-full mx-auto">
     <div class="w-full flex flex-col lg:flex-row">
       <div class="flex ml-0 mr-auto lg:flex-row">
-        <%= link_to root_path, class: "flex items-center" do %>
+        <%= link_to mypage_path, class: "flex items-center" do %>
           <%= image_tag 'logo.png', alt: 'Logo', class: 'h-20 w-60' %>
         <% end %>
       </div>
       <div class="hidden w-full lg:flex lg:pl-11" id="navbar-default-example">
         <ul class="flex items-center flex-col mt-4 lg:mt-0 lg:ml-auto lg:flex-row gap-4">
           <li>
-            <%= link_to t('.home'), root_path, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
+            <%= link_to t('.home'), mypage_path, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
           </li>
           <li>
-            <%= link_to t('.login'), login_path, method: :delete, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
-          </li>
-          <li>
-            <%= link_to t('.register'), new_user_path, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3' %>
+            <%= link_to t('.logout'), logout_path, method: :delete, class: 'flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-indigo-700 transition-all duration-500 mb-2 lg:mr-6 md:mb-0 md:mr-3', data: { turbo_method: :delete } %>
           </li>
         </ul>
       </div>

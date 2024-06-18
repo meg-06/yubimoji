@@ -12,20 +12,24 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 </head>
-<body class="flex flex-col min-h-screen bg-gray-100 overflow-auto">
-  <% if logged_in? %>
-    <%= render 'shared/header' %>
-  <% else %>
-    <%= render 'shared/before_login_header' %>
-  <% end %>
-    <%= render 'shared/flash_message' %>
+  <body class="flex flex-col min-h-screen bg-gray-100 overflow-auto">
+    <header>
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
+        <%= render 'shared/flash_message' %>
+    </header>
 
-  <main class="flex-grow flex items-center justify-center px-5">
-    <div class="w-full max-w-3xl">
-      <%= yield %>
-    </div>
-  </main>
+    <main class="flex-grow flex items-center justify-center px-5">
+      <div class="w-full max-w-3xl">
+        <%= yield %>
+      </div>
+    </main>
 
-  <%= render 'shared/footer' %>
-</body>
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
+  </body>
 </html>
