@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   layout 'alternative', only: [:index]
 
   def index
-    @favorites = current_user.favorites.page(params[:page])
+    @favorites = current_user.favorites.page(params[:page]).order(created_at: :desc)
   end
 
   def create
