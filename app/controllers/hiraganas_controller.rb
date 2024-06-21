@@ -3,7 +3,7 @@ class HiraganasController < ApplicationController
   layout 'alternative', only: [:index]
 
   def index
-    @hiraganas = current_user.hiraganas.page(params[:page])
+    @hiraganas = current_user.hiraganas.page(params[:page]).order(created_at: :desc)
   end
 
   def new
