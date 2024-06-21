@@ -1,4 +1,4 @@
-<footer class="w-full bg-white border-t border-gray-200 fixed bottom-0 left-0 z-20">
+<footer class="w-full bg-white border-t border-gray-200 mt-auto">
   <div class="mx-auto max-w-7xl">
     <!--Grid-->
     <div class="block py-5">
@@ -6,19 +6,10 @@
         <span class="text-sm text-gray-500">©<a href="https://pagedone.io/">pagedone</a> 2024, All rights reserved.</span>
         <ul class="text-sm flex items-center justify-center flex-row flex-wrap gap-4 md:gap-6 transition-all duration-500">
           <li>
-            <%= link_to t('footer.pagedone'), '#', class: 'text-gray-600 hover:text-gray-900' %>
+            <%= link_to '利用規約', page_path('terms'), class: 'text-gray-600 hover:text-gray-900' %>
           </li>
           <li>
-            <%= link_to t('footer.products'), '#', class: 'text-gray-600 hover:text-gray-900' %>
-          </li>
-          <li>
-            <%= link_to t('footer.resources'), '#', class: 'text-gray-600 hover:text-gray-900' %>
-          </li>
-          <li>
-            <%= link_to t('footer.blogs'), '#', class: 'text-gray-600 hover:text-gray-900' %>
-          </li>
-          <li>
-            <%= link_to t('footer.support'), '#', class: 'text-gray-600 hover:text-gray-900' %>
+            <%= link_to 'プライバシーポリシー', page_path('privacy'), class: 'text-gray-600 hover:text-gray-900' %>
           </li>
         </ul>
       </div>
