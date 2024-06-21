@@ -1,15 +1,20 @@
-<!-- app/views/favorites/index.html.erb -->
-<h1>お気に入りの一覧</h1>
-<%= link_to "戻る", hiraganas_path, class: "link link-neutral" %>
-  <div class="row">
-    <div class="col-12">
-      <div class="row">
-        <% if @favorites.present? %>
-          <%= render 'favorite_hiragana' %>
-        <% else %>
-          <div class="mb-3">登録した単語がありません</div>
-        <% end %>
+<div class="flex flex-col items-center w-full max-w-3xl mx-auto mt-8">
+  <div class="flex justify-center items-center space-x-4 mb-4">
+    <%= link_to "戻る", hiraganas_path, class: "link link-neutral" %>
+    <h1 class="text-center">お気に入り一覧</h1>
+  </div>
+  <div class="w-full">
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <% if @favorites.present? %>
+            <%= render 'favorite_hiragana' %>
+          <% else %>
+            <div class="mb-3 text-center">登録した単語がありません</div>
+          <% end %>
+        </div>
+        <%= paginate @favorites %>
       </div>
-      <%= paginate @favorites %>
     </div>
   </div>
+</div>

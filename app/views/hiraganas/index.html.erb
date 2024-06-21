@@ -1,17 +1,15 @@
-  <%= link_to "戻る", mypage_path, class: "link link-neutral" %>
-  <%= link_to "お気に入り", favorites_path, class: "link link-neutral" %>
-<div class="flex flex-col items-start w-full max-w-3xl">
-  <h1>ひらがなを押すと指文字が再生されます</h1>
-  <div class="row">
-    <div class="col-12">
-      <div class="row">
-        <% if @hiraganas.present? %>
-          <%= render 'hiragana' %>
-        <% else %>
-          <div class="mb-3">登録した単語がありません</div>
-        <% end %>
-      </div>
-      <%= paginate @hiraganas %>
-    </div>
+<div class="flex flex-col items-center w-full max-w-3xl mx-auto mb-8" style="margin-top: 2rem;">
+  <div class="flex justify-center items-center space-x-4 mb-4">
+    <%= link_to "戻る", mypage_path, class: "link link-neutral" %>
+    <%= link_to "お気に入り", favorites_path, class: "link link-neutral" %>
+    <h1 class="text-center">ひらがなを押すと指文字が再生されます</h1>
+  </div>
+  <div class="w-full">
+    <% if @hiraganas.present? %>
+      <%= render 'hiragana' %>
+    <% else %>
+      <div class="mb-3 text-center">登録した単語がありません</div>
+    <% end %>
+    <%= paginate @hiraganas %>
   </div>
 </div>
