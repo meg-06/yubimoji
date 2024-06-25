@@ -24,7 +24,7 @@
     } else {
       video.currentTime = 0;  // 再生位置を最初に戻す
       video.play().catch(error => console.log('Video play interrupted:', error));  // 再生を開始
-      video.playbackRate = 1.5;  // 再生速度を1.5倍に設定
+      video.playbackRate = 3;  // 再生速度を1.5倍に設定
     }
   }
 
@@ -65,7 +65,8 @@
           var video = firstSlide.querySelector('video');
           if (video) {
             video.play().catch(error => console.log('Video play interrupted:', error));
-            video.playbackRate = 1.5;  // 再生速度を1.5倍に設定
+            video.playbackRate = 3
+            ;  // 再生速度を1.5倍に設定
           }
         },
         slideChange: function () {
@@ -82,7 +83,7 @@
             video.currentTime = 0;
             setTimeout(() => {
               video.play().catch(error => console.log('Video play interrupted:', error));
-              video.playbackRate = 1.5;  // 再生速度を1.5倍に設定
+              video.playbackRate = 3;  // 再生速度を1.5倍に設定
             }, 200);  // 再生タイミングを遅らせる
           }
           checkSlideCompletion();
