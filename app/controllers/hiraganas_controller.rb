@@ -61,6 +61,6 @@ class HiraganasController < ApplicationController
   private
 
   def hiragana_params
-    params.require(:hiragana).permit(:character, :sign_language_id)
+    params.require(:hiragana).permit(:character)
   end
 end
