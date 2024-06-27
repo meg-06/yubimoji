@@ -45,12 +45,16 @@ class HiraganasController < ApplicationController
   end
 
   def next
-    current_id = params[:id].to_i
-    @hiragana = current_user.hiraganas.where("id < ?", current_id).order(created_at: :desc).first
+    @hiragana = current_user.hiraganas.where.not(id: session[:last_hiragana_id]).order("RANDOM()").first
+    if @hiragana.nil?
+      session[:last_hiragana_id] = nil
+      @hiragana = current_user.hiraganas.order("RANDOM()").first
+    end
     if @hiragana.nil?
       redirect_to mypage_path, notice: "これ以上問題がありません"
     else
-      redirect_to study_hiragana_path(@hiragana)
+      session[:last_hiragana_id] = @hiragana.id
+      redirect_to study_hiragana_path(@hiragana.id)
     end
   end
 
