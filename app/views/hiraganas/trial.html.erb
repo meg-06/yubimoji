@@ -3,53 +3,9 @@
   <%= f.text_field :character, value: params[:character], placeholder: '指文字に変換したい日本語を入力して下さい', class:  "w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 mb-4" %>
   <%= f.submit "変換", data: { turbo: false }, class: "w-full px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
 <% end %>
+<%= render 'sign_languages', sign_languages: @sign_languages %>
+<%= render 'shared/swiper_styles' %>
 
-<style>
-.swiper-container {
-  padding-left: 120px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.swiper-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-image,
-.swiper-video {
-  width: 100%;
-  max-width: 100%;  /* 必要に応じて調整 */
-  height: auto;
-  object-fit: contain;  /* 画像とビデオのアスペクト比を維持 */
-}
-
-</style>
-
-<div class="swiper-container max-w-4xl w-full">
-  <div class="swiper-wrapper">
-    <% @sign_languages.each do |sign_language| %>
-      <% if sign_language.yubimoji.end_with?('.png') %>
-        <div class="swiper-slide flex justify-center items-center">
-          <%= image_tag sign_language.yubimoji, alt: "#{sign_language.character}の指文字", class: "swiper-image rounded-lg" %>
-        </div>
-      <% elsif sign_language.yubimoji.end_with?('.mp4') %>
-        <div class="swiper-slide flex justify-center items-center">
-          <video muted onended="handleVideoEnd(this)" class="swiper-video rounded-lg">
-            <source src="<%= asset_path(sign_language.yubimoji) %>" type="video/mp4">
-            お使いのブラウザは動画の再生をサポートしていません。
-          </video>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
 
 <script>
   var swiper;  // swiperをグローバルスコープで定義

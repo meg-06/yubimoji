@@ -1,5 +1,24 @@
 <%= link_to "戻る", hiraganas_path, class: "link link-neutral" %>
-<%= render 'sign_languages', sign_languages: @sign_languages %>
+<%= render 'shared/swiper_styles' %>
+
+<div class="swiper-container max-w-4xl w-full">
+  <div class="swiper-wrapper">
+    <% @sign_languages.each do |sign_language| %>
+      <div class="swiper-slide flex flex-col justify-center items-center">
+        <% if sign_language.yubimoji.end_with?('.png') %>
+          <%= image_tag sign_language.yubimoji, alt: "#{sign_language.character}の指文字", class: "swiper-image rounded-lg" %>
+        <% elsif sign_language.yubimoji.end_with?('.mp4') %>
+          <video muted onended="handleVideoEnd(this)" class="swiper-video rounded-lg">
+            <source src="<%= asset_path(sign_language.yubimoji) %>" type="video/mp4">
+            お使いのブラウザは動画の再生をサポートしていません。
+          </video>
+        <% end %>
+        <p class="mt-2 text-lg text-center sign-language-text"><%= sign_language.character %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
   <!-- スライド速度変更ボタン -->
   <div class="playback-speed-buttons mt-4">
     <button class="btn btn-sm bg-yellow-100" data-speed="0.5">0.5x</button>
@@ -30,6 +49,12 @@
       button.addEventListener('click', function() {
         var speed = parseFloat(this.getAttribute('data-speed'));
         changeSwiperSpeed(speed);
+        var swiper = document.querySelector('.swiper-container').swiper;  // ここでswiperを再取得
+        var currentSlide = swiper.slides[swiper.activeIndex];
+        var hiraganaText = currentSlide.querySelector('.hiragana-text');
+        if (hiraganaText) {
+          hiraganaText.style.display = 'block';  // ひらがなのテキストを表示
+        }
       });
     });
 
@@ -78,6 +103,13 @@
           if (this.activeIndex === this.slides.length - 1) {
             swiper.autoplay.stop();
           }
+
+          // 前のスライドのテキストを非表示にする
+          var previousSlide = this.slides[this.previousIndex];
+          var previousText = previousSlide.querySelector('.sign-language-text');
+          if (previousText) {
+            previousText.style.display = 'none';
+          }
         }
       }
     });
@@ -107,5 +139,28 @@
     }
 
     window.changeSwiperSpeed = changeSwiperSpeed;
+  });
+
+  // スライダーの初期化
+  var swiper = new Swiper('.swiper-container', {
+    // Swiperのオプション設定
+    loop: false,
+    // スライドが切り替わったときの処理
+    on: {
+      slideChange: function () {
+        var previousSlide = this.slides[this.previousIndex];
+        var previousText = previousSlide.querySelector('.sign-language-text');
+        if (previousText) {
+          previousText.style.display = 'none';  // 前のスライドのテキストを非表示にする
+        }
+
+        // 新しいスライドのひらがなテキストを表示
+        var currentSlide = this.slides[this.activeIndex];
+        var hiraganaText = currentSlide.querySelector('.hiragana-text');
+        if (hiraganaText) {
+          hiraganaText.style.display = 'block';
+        }
+      }
+    }
   });
 </script>
