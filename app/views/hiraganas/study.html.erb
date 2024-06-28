@@ -2,16 +2,23 @@
 <%= render 'sign_languages', sign_languages: @sign_languages %>
 <%= render 'shared/swiper_styles' %>
 
-<div id="answer-container" style="display: none;">
-  <h2>答え</h2>
-  <ul class="flex flex-row space-x-4">
-    <% @sign_languages.each do |sign_language| %>
-      <li><%= sign_language.character %></li>
-    <% end %>
-  </ul>
+<div class="flex justify-end">
+  <div class="inline-block">
+    <%= button_tag '答えを見る', id: 'show-answer-button', class: 'btn btn-primary text-white w-32' %>
+  </div>
+  <div class="inline-block ml-3">
+    <%= link_to "次の問題", next_hiragana_path, data: { turbo: false }, class: 'btn btn-secondary text-white w-32' %>
+  </div>
 </div>
-
-<button id="show-answer-button">答えを見る</button>
-<%= link_to "次の問題", next_hiragana_path, data: { turbo: false } %>
+<script src="<%= asset_path 'hiraganas_study.js' %>"></script>
+<div class="container flex flex-col items-center justify-center">
+  <div id="answer-container" class="flex flex-col items-center justify-center" style="display: none;">
+    <ul class="flex flex-row space-x-4">
+      <% @sign_languages.each do |sign_language| %>
+        <li class="text-2xl"><%= sign_language.character %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 <script src="<%= asset_path 'hiraganas_study.js' %>"></script>
