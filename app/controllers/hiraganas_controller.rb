@@ -58,6 +58,17 @@ class HiraganasController < ApplicationController
     end
   end
 
+  def next_word
+    @current_hiragana = Hiragana.find(params[:id])
+    @next_hiragana = current_user.hiraganas.where('id < ?', @current_hiragana.id).order(id: :desc).first
+
+    if @next_hiragana
+      redirect_to hiragana_path(@next_hiragana.id)
+    else
+      redirect_to hiragana_path(current_user.hiraganas.order(id: :desc).first.id), notice: '最初の単語に戻ります'
+    end
+  end
+
   private
 
   def hiragana_params
