@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="inline-block">
-      <%= link_to "次の単語", next_word_hiragana_path(@hiragana), class: "btn bg-pink-500 text-white w-32 mt-2" %>
+      <%= link_to "次の単語", next_word_hiragana_path(@hiragana), data: { turbo: false }, class: "btn bg-pink-500 text-white w-32 mt-2" %>
     </div>
   </div>
 
