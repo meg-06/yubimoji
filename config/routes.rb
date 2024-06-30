@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
 
+  get 'my_account', to: 'users#my_account'
+  delete 'my_account', to: 'users#destroy'
+
   # ログイン後のマイページへのルート
   get 'mypage', to: 'user_sessions#mypage', as: :mypage
 end
