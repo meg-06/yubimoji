@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: %i[new create]
+  skip_before_action :require_login, only: %i[new create my_account]
 
   def new
     @user = User.new
@@ -13,6 +13,16 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    current_user.destroy
+    logout
+    redirect_to root_path, notice: '退会しました'
+  end
+
+  def my_account
+    @user = current_user
   end
 
   private
