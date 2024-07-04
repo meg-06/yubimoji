@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var currentSpeed = 2;  // 現在の再生速度を保持する変数
+  let currentSpeed = 2;  // 現在の再生速度を保持する変数
 
   function handleVideoEnd(video) {
-    var swiper = document.querySelector('.swiper-container').swiper;
+    const swiper = document.querySelector('.swiper-container').swiper;
     if (swiper.activeIndex === swiper.slides.length - 1) {
       video.pause();  // 最後のスライドでは再生を停止する
       video.currentTime = video.duration;  // ビデオを停止された位置に留める
@@ -11,21 +11,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  var speedButtons = document.querySelectorAll('.playback-speed-buttons button');
+  const speedButtons = document.querySelectorAll('.playback-speed-buttons button');
   speedButtons.forEach(function(button) {
     button.addEventListener('click', function() {
-      var speed = parseFloat(this.getAttribute('data-speed'));
+      const speed = parseFloat(this.getAttribute('data-speed'));
       changeSwiperSpeed(speed);
-      var swiper = document.querySelector('.swiper-container').swiper;  // ここでswiperを再取得
-      var currentSlide = swiper.slides[swiper.activeIndex];
-      var hiraganaText = currentSlide.querySelector('.hiragana-text');
+      const swiper = document.querySelector('.swiper-container').swiper;  // ここでswiperを再取得
+      const currentSlide = swiper.slides[swiper.activeIndex];
+      const hiraganaText = currentSlide.querySelector('.hiragana-text');
       if (hiraganaText) {
         hiraganaText.style.display = 'block';  // ひらがなのテキストを表示
       }
     });
   });
 
-  var swiper = new Swiper('.swiper-container', {
+  const swiper = new Swiper('.swiper-container', {
     effect: 'fade',
     spaceBetween: 10,
     loop: false,
@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
     centeredSlides: true,
     on: {
       init: function () {
-        var firstSlide = this.slides[0];
-        var video = firstSlide.querySelector('video');
+        const firstSlide = this.slides[0];
+        const video = firstSlide.querySelector('video');
         if (video) {
           video.playbackRate = currentSpeed;  // 初期の再生速度を設定
           video.play().catch(error => console.log('Video play interrupted:', error));
@@ -50,13 +50,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       },
       slideChange: function () {
-        var videos = document.querySelectorAll('video');
+        const videos = document.querySelectorAll('video');
         videos.forEach(function(video) {
           video.pause();
         });
 
-        var currentSlide = this.slides[this.activeIndex];
-        var video = currentSlide.querySelector('video');
+        const currentSlide = this.slides[this.activeIndex];
+        const video = currentSlide.querySelector('video');
         if (video) {
           video.currentTime = 0;
           video.playbackRate = currentSpeed;  // 再生速度を設定
@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // 前のスライドのテキストを非表示にする
-        var previousSlide = this.slides[this.previousIndex];
-        var previousText = previousSlide.querySelector('.sign-language-text');
+        const previousSlide = this.slides[this.previousIndex];
+        const previousText = previousSlide.querySelector('.sign-language-text');
         if (previousText) {
           previousText.style.display = 'none';
         }
@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 0.5, 0.75, 1倍速のときはMP4を2倍速で、1.25、1.5、2倍のときは3倍で再生
     currentSpeed = (speed <= 1) ? 2 : 3;
 
-    var currentSlide = swiper.slides[swiper.activeIndex];
-    var video = currentSlide.querySelector('video');
+    const currentSlide = swiper.slides[swiper.activeIndex];
+    const video = currentSlide.querySelector('video');
     if (video) {
       video.playbackRate = currentSpeed;  // 再生速度を設定
       video.currentTime = 0;  // 再生位置をリセット
