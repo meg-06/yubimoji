@@ -4,6 +4,17 @@
     <%= link_to "お気に入り", favorites_path, class: "link link-neutral" %>
     <h1 class="text-center">ひらがなを押すと指文字が再生されます</h1>
   </div>
+  <body class="h-screen w-screen flex items-center justify-center">
+      <main class="container px-5 flex flex-col items-center flex-grow w-full max-w-4xl mx-auto">
+        <form class="new_board w-full" action="/hiraganas" accept-charset="UTF-8" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off">
+          <div class="mb-3 flex items-center space-x-4">
+            <input class="input input-bordered input-primary text-lg p-2 flex-grow" placeholder="指文字に変換したいひらがなを入力" type="text" name="hiragana[character]" id="hiragana_character">
+            <input type="submit" name="commit" value="登録" class="btn btn-primary text-white " data-disable-with="登録">
+          </div>
+        </form>
+      </main>
+    </body>
   <div class="w-full">
     <% if @hiraganas.present? %>
       <%= render 'hiragana' %>
