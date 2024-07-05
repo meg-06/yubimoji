@@ -4,6 +4,7 @@ class HiraganasController < ApplicationController
 
   def index
     @hiraganas = current_user.hiraganas.page(params[:page]).order(created_at: :desc)
+    @hiragana = Hiragana.new
   end
 
   def new
@@ -13,7 +14,7 @@ class HiraganasController < ApplicationController
   def create
     @hiragana = current_user.hiraganas.build(hiragana_params)
     if @hiragana.save
-      redirect_to new_hiragana_path, success: 'ひらがなを登録しました'
+      redirect_to hiraganas_path, success: 'ひらがなを登録しました'
     else
       flash.now[:danger] = @hiragana.errors.messages.values.flatten.join(', ')
       render :new, status: :unprocessable_entity
