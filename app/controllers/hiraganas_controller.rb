@@ -16,8 +16,9 @@ class HiraganasController < ApplicationController
     if @hiragana.save
       redirect_to hiraganas_path, success: 'ひらがなを登録しました'
     else
+      @hiraganas = current_user.hiraganas.page(params[:page]).order(created_at: :desc)
       flash.now[:danger] = @hiragana.errors.messages.values.flatten.join(', ')
-      render :new, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
