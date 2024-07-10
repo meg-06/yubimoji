@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'hiraganas/trial', to: 'hiraganas#trial', as: :trial_hiraganas
 
+  post '/google_login_api/callback', to: 'google_login_api#callback'
+
   resources :hiraganas, only: %i[index new create show destroy] do
     member do
       get 'study'
