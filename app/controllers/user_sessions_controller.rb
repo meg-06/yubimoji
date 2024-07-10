@@ -1,6 +1,5 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
-  # layout 'alternative', only: [:mypage]
 
   def new; end
 
@@ -10,7 +9,8 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to mypage_path
     else
-      render :new
+      flash.now[:danger] = 'ログインに失敗しました'
+      render :new, status: :unprocessable_entity
     end
   end
 
