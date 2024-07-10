@@ -82,4 +82,4 @@ gem 'meta-tags'
 
 gem 'googleauth'
 
-gem 'dotenv-rails', groups: [:development, :test]
+gem 'dotenv-rails'
