@@ -40,10 +40,23 @@ class HiraganasController < ApplicationController
     @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
   end
 
-
   def trial
-    characters = params[:character]&.chars || []
-    @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
+    if params[:character].present?
+      characters = params[:character].chars
+      @sign_languages = []
+      characters.each do |char|
+        hiragana = Hiragana.new(character: char)
+        if hiragana.valid?
+          @sign_languages << SignLanguage.find_by(character: char)
+        else
+          flash.now[:danger] = hiragana.errors.full_messages.join(', ')
+          @sign_languages = []
+          break
+        end
+      end
+    else
+      @sign_languages = []
+    end
   end
 
   def next
