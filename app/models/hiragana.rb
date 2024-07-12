@@ -1,20 +1,32 @@
 class Hiragana < ApplicationRecord
-  validates :character, presence: { message: '入力してください' }
-  validates :character, uniqueness: { scope: :user_id, message: 'この単語は既に登録されています' }, if: -> { character.present? }
-  validates :character, format: { with: /\A[\p{hiragana}ー－]+\z/, message: 'ひらがなで入力してください' }, if: -> { character.present? }
+  belongs_to :user, optional: true
+
+  validate :character_presence
+  validate :character_uniqueness, if: -> { character.present? && user_id.present? }
+  validate :character_format, if: -> { character.present? }
   validate :no_vu_character
 
-  belongs_to :user
+  private
 
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :sign_language
+  def character_presence
+    errors.add(:base, '入力してください') if character.blank?
+  end
 
-  has_many :favorites, dependent: :destroy
-  has_many :favorited_by_users, through: :favorites, source: :user
+  def character_uniqueness
+    if Hiragana.exists?(character: character, user_id: user_id)
+      errors.add(:base, 'この単語は既に登録されています')
+    end
+  end
+
+  def character_format
+    unless character =~ /\A[\p{hiragana}ー－]+\z/
+      errors.add(:base, 'ひらがなで入力してください')
+    end
+  end
 
   def no_vu_character
     if character&.include?('ゔ')
-      errors.add(:character, '「ゔ」を含めることはできません')
+      errors.add(:base, '「ゔ」を含めることはできません')
     end
   end
 end
