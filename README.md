@@ -1,6 +1,6 @@
-# [ゆびもじアプリ](yubimoji.com "Yubimoji Home")
+# [ゆびもじアプリ](https://yubimoji.com/)
 
-[ゆびもじアプリ](yubimoji.com "Yubimoji Home")は、自分の好きな言葉を指文字に変換できるサービスです。  
+[ゆびもじアプリ](https://yubimoji.com/)は、自分の好きな言葉を指文字に変換できるサービスです。  
 また、作成した単語で指文字を学ぶことができます。
 
 
