@@ -2,11 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-lg-8 mx-auto">
-        <h1 class="large-text">ユーザー登録</h1>
         <%= form_with model: @user do |f| %>
+          <div class="mb-4">
+            <%= render 'shared/error_messages', object: f.object %>
+          </div>
           <div class="relative">
             <%= f.label :name, class: "flex items-center mb-2 text-gray-600 text-sm font-medium" %>
-            <%= f.text_field :name, id: "Medium-input", class: "block w-full max-w-full px-4 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none leading-relaxed", placeholder: "名前", required: "" %>            
+            <%= f.text_field :name, id: "Medium-input", class: "block w-full max-w-full px-4 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none leading-relaxed", placeholder: "名前", required: "" %>
             </div>
           <div class="mb-3">
             <%= f.label :email, class: "flex items-center mb-2 text-gray-600 text-sm font-medium" %>
