@@ -6,7 +6,7 @@ class GoogleLoginApiController < ApplicationController
   skip_before_action :require_login, only: [:callback]
 
   def callback
-    payload = Google::Auth::IDTokens.verify_oidc(params[:credential], aud: ENV['GOOGLE_CLIENT_ID'])
+    payload = Google::Auth::IDTokens.verify_oidc(params[:credential], aud: ENV.fetch('GOOGLE_CLIENT_ID', nil))
     user = User.find_or_create_by(email: payload['email']) do |user|
       user.name = payload['name'] if user.name.blank?
       user.password = SecureRandom.hex(15) if user.crypted_password.blank?  # ダミーのパスワードを設定
