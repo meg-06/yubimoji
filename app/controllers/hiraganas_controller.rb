@@ -7,6 +7,12 @@ class HiraganasController < ApplicationController
     @hiragana = Hiragana.new
   end
 
+  def show
+    @hiragana = Hiragana.find(params[:id])
+    characters = @hiragana.character.chars
+    @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
+  end
+
   def new
     @hiragana = Hiragana.new
   end
@@ -20,12 +26,6 @@ class HiraganasController < ApplicationController
       flash.now[:danger] = @hiragana.errors.messages.values.flatten.join(', ')
       render :index, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @hiragana = Hiragana.find(params[:id])
-    characters = @hiragana.character.chars
-    @sign_languages = characters.map { |char| SignLanguage.find_by(character: char) }
   end
 
   def destroy
@@ -75,7 +75,7 @@ class HiraganasController < ApplicationController
 
   def next_word
     @current_hiragana = Hiragana.find(params[:id])
-    @next_hiragana = current_user.hiraganas.where('id < ?', @current_hiragana.id).order(id: :desc).first
+    @next_hiragana = current_user.hiraganas.where(id: ...@current_hiragana.id).order(id: :desc).first
 
     if @next_hiragana
       redirect_to hiragana_path(@next_hiragana.id)
