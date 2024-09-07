@@ -90,3 +90,4 @@ class HiraganasController < ApplicationController
     params.require(:hiragana).permit(:character)
   end
 end
+
