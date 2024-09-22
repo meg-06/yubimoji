@@ -5,3 +5,8 @@ require:
 
 AllCops:
   NewCops: enable
+
+# specのテストが長いと警告が出るので無視する。
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
