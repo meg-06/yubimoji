@@ -4,7 +4,6 @@ class Hiragana < ApplicationRecord
   validate :character_presence
   validate :character_uniqueness, if: -> { character.present? && user_id.present? }
   validate :character_format, if: -> { character.present? }
-  validate :no_vu_character
 
   private
 
@@ -21,12 +20,6 @@ class Hiragana < ApplicationRecord
   def character_format
     unless character =~ /\A[\p{hiragana}ー－]+\z/
       errors.add(:base, 'ひらがなで入力してください')
-    end
-  end
-
-  def no_vu_character
-    if character&.include?('ゔ')
-      errors.add(:base, '「ゔ」を含めることはできません')
     end
   end
 end
