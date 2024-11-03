@@ -82,6 +82,7 @@ class SignLanguage < ActiveHash::Base
     { id: 79, character: 'ょ', yubimoji: 'ょ.mp4',media_type: 'video' },
     { id: 80, character: 'っ', yubimoji: 'っ.mp4',media_type: 'video' },
     { id: 81, character: 'ー', yubimoji: 'ー.mp4',media_type: 'video' },
+    { id: 82, character: 'ゔ', yubimoji: 'ゔ.mp4',media_type: 'video' },
   ]
 
 end
